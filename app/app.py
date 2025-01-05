@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 
 # Load the saved model
-model = joblib.load('loan_model.pkl')
+model = joblib.load('loan1.pkl')
 
 app = Flask(__name__)
 
