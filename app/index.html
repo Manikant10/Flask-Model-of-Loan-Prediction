@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Loan Approval Predictor</h1>
+            <p>Check if your loan application will be approved!</p>
+        </header>
+        <main>
+            <form action="/predict" method="POST">
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="married">Marital Status:</label>
+                    <select id="married" name="married" required>
+                        <option value="Yes">Married</option>
+                        <option value="No">Single</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dependents">Number of Dependents:</label>
+                    <input type="number" id="dependents" name="dependents" min="0" max="5" required>
+                </div>
+                <div class="form-group">
+                    <label for="self_employed">Self-Employed:</label>
+                    <select id="self_employed" name="self_employed" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="applicant_income">Applicant Income:</label>
+                    <input type="number" id="applicant_income" name="applicant_income" required>
+                </div>
+                <div class="form-group">
+                    <label for="coapplicant_income">Co-Applicant Income:</label>
+                    <input type="number" id="coapplicant_income" name="coapplicant_income" required>
+                </div>
+                <div class="form-group">
+                    <label for="loan_amount">Loan Amount:</label>
+                    <input type="number" id="loan_amount" name="loan_amount" required>
+                </div>
+                <div class="form-group">
+                    <label for="loan_amount_term">Loan Amount Term:</label>
+                    <input type="number" id="loan_amount_term" name="loan_amount_term" required>
+                </div>
+                <div class="form-group">
+                    <label for="credit_history">Credit History:</label>
+                    <select id="credit_history" name="credit_history" required>
+                        <option value="1">Good</option>
+                        <option value="0">Bad</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="property_area">Property Area:</label>
+                    <select id="property_area" name="property_area" required>
+                        <option value="Urban">Urban</option>
+                        <option value="Rural">Rural</option>
+                        <option value="Semiurban">Semiurban</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+            {% if prediction_text %}
+            <div class="result">
+                <p>{{ prediction_text }}</p>
+            </div>
+            {% endif %}
+        </main>
+    </div>
+</body>
+</html>
