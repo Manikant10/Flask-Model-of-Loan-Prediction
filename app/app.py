@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-app = Flask(__name__, template_folder='C:\\Users\\manic\\OneDrive\\Dokumen\\templates')
+app = Flask(__name__)
 
 import joblib
 import pandas as pd
